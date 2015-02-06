@@ -75,11 +75,6 @@ RUN chown -R tomcat7:tomcat7 /tomcat7
 RUN chmod +x /tomcat7/bin/catalina.sh
 RUN chmod +x /tomcat7/run.sh
 
-
-
-CMD ["run.sh"]
-
-
 USER tomcat7
 
-
+CMD /tomcat7/run.sh
