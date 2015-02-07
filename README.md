@@ -3,14 +3,13 @@ This docker file is based on ubuntu:trusty, downloads tomcat directly from apach
 
 ## Build kripp/docker-tomcat7
 
-You might want to adjust some configurations in the conf folder. These are then placed under /tomcat7/con
-Build the image by running the "build.sh"
-
+You might want to adjust some configurations in the conf folder. These are then placed under /tomcat7/conf <br>
+Build your image by simply running  '''build.sh'''
 
 ## Running the container
 
 ### Tomcat User and Group
-The container runs tomcat as user tomcat7 with uid 10500, group tomcat7 with gid 1600
+The container runs tomcat as user tomcat7 with uid 10500, group tomcat7 with gid 1600<br>
 Make sure this maps to a valid user/group on your host when doing a bind mount by using the -v switch e.g. for webapps or logs
 
 ### Example 
