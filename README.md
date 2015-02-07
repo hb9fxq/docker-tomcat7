@@ -24,6 +24,20 @@ List running containers
 ```
 docker ps
 ```
+Start container by name
+```
+docker start MyTomcatContainer1
+```
+
+Stop container by name
+```
+docker stop MyTomcatContainer1
+```
+
+Restart container by name
+```
+docker restart MyTomcatContainer1
+```
 List all contianers
 ```
 docker ps -a
@@ -33,3 +47,16 @@ Enter running container (Req. docker version > 1.3)
 ```
 docker exec -it MyTomcatContainer1 /bin/bash
 ```
+
+Export Container (not an image) 
+
+```
+docker export MyTomcatContainer1 /myHostBackupDIr/MyTomcatContainer_bku.tar
+```
+
+Show the layers of all images
+```
+sudo docker images --tree
+```
+
+<br>.... anything else... https://docs.docker.com/reference/commandline/cli/ 
