@@ -21,7 +21,7 @@ RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true 
 RUN apt-get -y install oracle-java7-installer
 
 # set JAVA_HOME
-RUN echo "JAVA_HOME=/usr/lib/jvm/java-7-oracle" >> /etc/environment
+ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
 
 #### install tomcat7
 
@@ -62,13 +62,13 @@ RUN curl -SL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
 	&& rm tomcat.tar.gz*
 
 
-add confs/catalina.policy /tomcat7/config/catalina.policy
-add confs/catalina.properties /tomcat7/config/catalina.properties
-add confs/context.xml /tomcat7/config/context.xml
-add confs/logging.properties /tomcat7/config/logging.properties
-add confs/server.xml /tomcat7/config/server.xml
-add confs/tomcat-users.xml /tomcat7/config/tomcat-users.xml
-add confs/web.xml /tomcat7/config/web.xml
+add confs/catalina.policy /tomcat7/conf/catalina.policy
+add confs/catalina.properties /tomcat7/conf/catalina.properties
+add confs/context.xml /tomcat7/conf/context.xml
+add confs/logging.properties /tomcat7/conf/logging.properties
+add confs/server.xml /tomcat7/conf/server.xml
+add confs/tomcat-users.xml /tomcat7/conf/tomcat-users.xml
+add confs/web.xml /tomcat7/conf/web.xml
 add run.sh /tomcat7/run.sh
 
 RUN chown -R tomcat7:tomcat7 /tomcat7
