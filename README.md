@@ -89,7 +89,7 @@ docker create --name MyTomcatContainer1 --volumes-from MyTomcatWebappDataContain
 you can now start it
 
 ```
-docker start MyTomcatContainer2
+docker start MyTomcatContainer1
 ```
 ....or directly run it
 
