@@ -3,13 +3,13 @@ This docker file is based on ubuntu:trusty, downloads tomcat directly from apach
 
 ## Build kripp/docker-tomcat7
 
-You might want to adjust some configurations in the conf folder. These are then placed under /tomcat7/conf <br>
+You might want to adjust some configurations in the conf folder. These are then placed under /tomcat7/conf </br>
 Build your image by simply running  '''build.sh'''
 
 ## Running the container
 
 ### Tomcat User and Group
-The container runs tomcat as user tomcat7 with uid 10500, group tomcat7 with gid 1600<br>
+The container runs tomcat as user tomcat7 with uid 10500, group tomcat7 with gid 1600</br>
 Make sure this maps to a valid user/group on your host when doing a bind mount by using the -v switch e.g. for webapps or logs
 
 ### Example 
@@ -65,5 +65,34 @@ Show the layers of all images
 ```
 sudo docker images --tree
 ```
+</br>
+.... anything else... https://docs.docker.com/reference/commandline/cli/ 
 
-<br>.... anything else... https://docs.docker.com/reference/commandline/cli/ 
+## Using a data volume container
+
+First pull the datacontainer image. 
+```
+docker pull kripp/docker-tomcat7-datacontainer
+```
+
+Create the data container
+
+```
+docker create --name MyTomcatWebappDataContainer -i -t kripp/docker-tomcat7-datacontainer /bin/bash
+```
+
+Create an application container that mounts the volumes of our new datacontainer
+
+```
+docker create --name MyTomcatContainer1 --volumes-from MyTomcatWebappDataContainer -p 8080:8080 kripp/docker-tomcat7
+```
+you can now start it
+
+```
+docker start MyTomcatContainer2
+```
+....or directly run it
+
+```
+ docker run -d --name MyTomcatContainer1 --volumes-from MyTomcatWebappDataContainer -p 8080:8080 kripp/docker-tomcat7
+```
