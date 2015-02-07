@@ -14,9 +14,16 @@ Make sure this maps to a valid user/group on your host when doing a bind mount b
 
 ### Example 
 
+Bind to port 8080 on all interfaces
 ```
 docker run -d --name MyTomcatContainer1 -v /myHostLogDir:/tomcat7/logs -v /myHostWebAppsDir:/tomcat7/webapps  -p 8080:8080 kripp/docker-tomcat7
 ```
+
+Bind to port 8080 only to the localhost interface
+```
+docker run -d --name MyTomcatContainer1 -v /myHostLogDir:/tomcat7/logs -v /myHostWebAppsDir:/tomcat7/webapps  -p 127.0.0.1:8080:8080 kripp/docker-tomcat7
+```
+
 
 ## Mini cheat sheet
 
